@@ -1,0 +1,20 @@
+# Ruby
+.bundle
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+
+# DB
+/db/*.sqlite3
+
+# Node
+node_modules/
+
+# Vite
+public/vite
+.vite
+
+# Env
+.env
+.env.*
