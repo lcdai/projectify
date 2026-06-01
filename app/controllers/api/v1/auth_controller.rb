@@ -7,7 +7,10 @@ class Api::V1::AuthController < ApplicationController
 
       render json: {
         token: token,
-        user: user
+        user: {
+          id: user.id,
+          email: user.email
+        }
       }, status: :created
     else
       render json: {
@@ -24,7 +27,10 @@ class Api::V1::AuthController < ApplicationController
 
       render json: {
         token: token,
-        user: user
+        user: {
+          id: user.id,
+          email: user.email
+        }
       }, status: :ok
     else
       render json: {

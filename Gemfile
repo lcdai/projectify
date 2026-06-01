@@ -35,7 +35,7 @@ gem "image_processing", "~> 1.2"
 gem "vite_rails"
 gem "jwt"
 gem "bcrypt", "~> 3.1.7"
-gem "fast_jsonapi"
+gem "jsonapi-serializer"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 

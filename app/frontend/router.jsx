@@ -1,17 +1,24 @@
-import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
-import Dashboard from "./pages/Dashboard"
+import {
+  createBrowserRouter,
+} from "react-router-dom";
 
-export default function Router() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Dashboard />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Projects from "./pages/Projects";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/projects",
+    element: <Projects />,
+  },
+]);
+
+export default router;

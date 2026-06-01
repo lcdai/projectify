@@ -8,14 +8,28 @@ module AuthorizeRequest
   private
 
   def authorize_request
-    header = request.headers["Authorization"]
+    auth_header =
+      request.headers["Authorization"]
 
-    token = header.split(" ").last if header
+    return unauthorized! unless auth_header
 
-    decoded = JsonWebToken.decode(token)
+    token =
+      auth_header.split(" ").last
 
-    @current_user = User.find_by(id: decoded[:user_id]) if decoded
+    decoded =
+      JsonWebToken.decode(token)
 
-    render json: { error: "Unauthorized" }, status: :unauthorized unless @current_user
+    return unauthorized! unless decoded
+
+    @current_user =
+      User.find_by(id: decoded[:user_id])
+
+    return unauthorized! unless @current_user
+  end
+
+  def unauthorized!
+    render json: {
+      error: "Unauthorized"
+    }, status: :unauthorized
   end
 end

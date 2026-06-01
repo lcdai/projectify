@@ -105,8 +105,6 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
-    fast_jsonapi (1.5)
-      activesupport (>= 4.2)
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
     ffi (1.17.3-arm-linux-gnu)
@@ -131,6 +129,8 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.18.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jwt (3.1.2)
       base64
     kamal (2.10.1)
@@ -375,8 +375,8 @@ DEPENDENCIES
   brakeman
   bundler-audit
   debug
-  fast_jsonapi
   image_processing (~> 1.2)
+  jsonapi-serializer
   jwt
   kamal
   pg (~> 1.1)
