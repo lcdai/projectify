@@ -1,19 +1,40 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 
-const App = () => {
+import ProtectedRoute from "./components/ProtectedRoute";
+import MainLayout from "./layouts/MainLayout";
+
+export default function App() {
   return (
     <MainLayout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/projects"
+          element={
+            <ProtectedRoute>
+              <Projects />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </MainLayout>
   );
-};
-
-export default App;
+}

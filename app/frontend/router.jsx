@@ -1,24 +1,13 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import React from "react"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Projects from "./pages/Projects";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/projects",
-    element: <Projects />,
-  },
-]);
-
-export default router;
+export default function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<h1 className="p-6 text-3xl font-bold">Projectify</h1>} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
