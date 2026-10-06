@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :projects do
         resources :tasks
       end
+
+      resources :activities, only: [:index]
     end
   end
 

@@ -10,11 +10,33 @@ class Task < ApplicationRecord
   validates :priority, inclusion: { in: PRIORITIES }
 
   before_validation :set_defaults
+  after_create :log_created
+  after_update :log_updated
 
   private
 
   def set_defaults
     self.status ||= "todo"
     self.priority ||= "medium"
+  end
+
+  def log_created
+    Activity.create!(
+      user: user,
+      project: project,
+      task: self,
+      action: "task_created",
+      details: "Created task #{title}"
+    )
+  end
+
+  def log_updated
+    Activity.create!(
+      user: user,
+      project: project,
+      task: self,
+      action: "task_updated",
+      details: "Updated task #{title}"
+    )
   end
 end
